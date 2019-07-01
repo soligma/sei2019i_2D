@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Photo editor</string>
+    <string name="tittle">Photo Editor</string>
+    <string name="username">username or email</string>
+    <string name="pw">password</string>
+    <string name="button">Login</string>
+    <string name="button2">go back</string>
+    <string name="reg">Register now</string>
+    <string name="name">name</string>
+    <string name="user">username</string>
+    <string name="email">e-mail</string>
+    <string name="camgallery">Photo Bucket</string>
+    <string name="cam">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="filter">filter</string>
+    <string name="filter1">filter1</string>
+    <string name="filter2">filter2</string>
+    <string name="filter3">filter3</string>
+    <string name="admintittle">Permissions</string>
+</resources>
