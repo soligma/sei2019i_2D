@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.user_log1);
         password = findViewById(R.id.password_log1);
     }
+
+
 
     public void buttonLogin(View view){
         String user_log = username.getText().toString();
@@ -40,5 +42,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(admin);
             }
         }
+    }
+
+    public void register(View view) {
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 }

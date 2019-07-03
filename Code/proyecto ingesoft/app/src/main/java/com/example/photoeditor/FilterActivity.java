@@ -12,8 +12,4 @@ public class FilterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
     }
-    public void toPhoto(View view){
-        Intent cancel = new Intent(this,PhotoActivity.class);
-        startActivity(cancel);
-    }
 }
