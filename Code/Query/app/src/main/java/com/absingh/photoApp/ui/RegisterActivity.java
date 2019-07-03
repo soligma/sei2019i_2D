@@ -1,4 +1,4 @@
-package com.example.photoeditor;
+package com.example.photoeditor.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.photoeditor.R;
+import com.example.photoeditor.businessLogic.controllers.RegisterController;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -16,6 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getSupportActionBar().hide();
 
         username_reg = findViewById(R.id.user_reg);
         pw_reg = findViewById(R.id.pw_reg);
@@ -26,14 +30,17 @@ public class RegisterActivity extends AppCompatActivity {
         String value2 = username_reg.getText().toString();
         String value4 = pw_reg.getText().toString();
 
+        RegisterController registerController = new RegisterController();
+
         if(value2.length() == 0){
-            Toast.makeText(this, "You must enter an username", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debe ingresar un nombre de usuario.", Toast.LENGTH_SHORT).show();
         }else if(value4.length() == 0){
-            Toast.makeText(this, "You must enter a password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debe ingresar una contaseña.", Toast.LENGTH_SHORT).show();
         }
 
-        if(value2.length() != 0 && value4.length() != 0){
-            Toast.makeText(this, "Validated fields but this function still doesn't works", Toast.LENGTH_SHORT).show();
+        if(registerController.Register(value2, value4) && (value2.length() > 0 && value4.length()> 0)){
+            Toast.makeText(this, "Registro completo. Puede iniciar sesión", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, LoginActivity.class));
         }
     }
 

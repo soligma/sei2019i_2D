@@ -1,10 +1,12 @@
-package com.example.photoeditor;
+package com.example.photoeditor.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
+
+import com.example.photoeditor.R;
 
 public class PermissionActivity extends AppCompatActivity {
 
@@ -14,6 +16,7 @@ public class PermissionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
+        getSupportActionBar().hide();
         check1 = findViewById(R.id.check_f1);
         check2 = findViewById(R.id.check_f2);
         check3 = findViewById(R.id.check_f3);
