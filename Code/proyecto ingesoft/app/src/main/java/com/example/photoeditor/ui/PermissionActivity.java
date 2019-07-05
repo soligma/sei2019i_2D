@@ -26,25 +26,47 @@ public class PermissionActivity extends AppCompatActivity {
     }
 
     public void save(View view){
+        boolean bool1,bool2,bool3,bool4,bool5,bool6;
         String notify = "";
-        if(check1.isChecked() == true){
+        if(check1.isChecked()){
+            bool1 = true;
             notify = "The filter 1 has been applied";
+        }else{
+            bool1 = false;
         }
-        if(check2.isChecked() == true){
+        if(check2.isChecked()){
             notify = "The filter 2 has been applied";
+            bool2 = true;
+        }else{
+            bool2 = false;
         }
-        if(check3.isChecked() == true){
+        if(check3.isChecked()){
             notify = "The filter 3 has been applied";
+            bool3 = true;
+        }else{
+            bool3 = false;
         }
-        if(check4.isChecked() == true){
+        if(check4.isChecked()){
             notify = "The filter 4 has been applied";
+            bool4 = true;
+        }else{
+            bool4 = false;
         }
-        if(check5.isChecked() == true){
+        if(check5.isChecked()){
             notify = "The filter 5 has been applied";
+            bool5 = true;
+        }else{
+            bool5 = false;
         }
-        if(check6.isChecked() == true){
+        if(check6.isChecked()){
             notify = "The filter 6 has been applied";
+            bool6 = true;
+        }else{
+            bool6 = false;
         }
-        Toast.makeText(this,notify,Toast.LENGTH_LONG).show();
+        if(notify.length() != 0){
+            Toast.makeText(this,notify,Toast.LENGTH_LONG).show();
+        }
+
     }
 }
