@@ -10,7 +10,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tittle_2"
@@ -35,25 +35,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginLeft="36dp"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="70dp"
             android:text="@string/cam"
             android:textColor="#FFFFFF"
-            android:textSize="24sp"
+            android:textSize="36sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tittle_2" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="80dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginLeft="36dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="40dp"
             android:text="@string/gallery"
             android:textColor="#FFFFFF"
-            android:textSize="24sp"
+            android:textSize="36sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/check_f3" />
+            app:layout_constraintTop_toBottomOf="@+id/check_crop1" />
 
         <CheckBox
             android:id="@+id/check_f1"
@@ -114,6 +114,7 @@
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/check_f4" />
+
         <android.support.constraint.Guideline
             android:id="@+id/guideline_left"
             android:layout_width="wrap_content"
@@ -146,17 +147,41 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_bg"
             android:onClick="save"
             android:text="@string/buttonsave"
-            android:background="@drawable/btn_bg"
             android:textColor="@color/login_form_details_medium"
             android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline_right"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/check_crop2" />
+
+        <CheckBox
+            android:id="@+id/check_crop1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/crop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/check_f3" />
+
+        <CheckBox
+            android:id="@+id/check_crop2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/crop"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/check_f6" />
 
 
