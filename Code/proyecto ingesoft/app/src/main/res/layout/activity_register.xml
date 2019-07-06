@@ -63,7 +63,7 @@
         android:layout_marginRight="8dp"
         android:text="@string/tittle"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"

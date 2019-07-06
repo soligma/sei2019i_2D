@@ -11,8 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.example.photoeditor.R;
@@ -23,11 +21,10 @@ public class FilterActivity extends AppCompatActivity {
 
     private final String ROOT_FOLDER = "myPhotosTest/";
     private final String IMAGE_PATH = ROOT_FOLDER + "myPhotos";
-    final int CHOOSER_CODE = 10;
+    final int GALLERY_CODE = 10;
     final int PHOTO_CODE = 20;
-    ImageView image;
     String path;
-    String imageName;
+    String imageName = "";
 
     FilterActivity filter;
     ImageView iv;
@@ -59,20 +56,20 @@ public class FilterActivity extends AppCompatActivity {
     private void uploadImage() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/");
-        startActivityForResult(intent.createChooser(intent,"Choose the app"),CHOOSER_CODE);
+        startActivityForResult(intent.createChooser(intent,"Choose the app"), GALLERY_CODE);
     }
 
     private void takePhoto() {
-        File fileImage = new File(Environment.getExternalStorageDirectory(),ROOT_FOLDER);
+        File fileImage = new File(Environment.getExternalStorageDirectory(),IMAGE_PATH);
         boolean isCreated = fileImage.exists();
 
         if(!isCreated){
-            isCreated =  fileImage.mkdir();
+            isCreated = fileImage.mkdirs();
         }
         if(isCreated){
             imageName = (System.currentTimeMillis()/1000) + ".jpg";
         }
-        String path  = Environment.getExternalStorageDirectory() + File.separator + IMAGE_PATH + File.separator + imageName;
+        path  = Environment.getExternalStorageDirectory() + File.separator + IMAGE_PATH + File.separator + imageName;
         File image = new File(path);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(image));
@@ -83,7 +80,7 @@ public class FilterActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode){
-            case CHOOSER_CODE:
+            case GALLERY_CODE:
                 Uri myPath = data.getData();
                 iv.setImageURI(myPath);
                 break;
