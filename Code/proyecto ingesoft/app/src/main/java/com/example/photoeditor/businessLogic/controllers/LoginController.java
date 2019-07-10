@@ -10,16 +10,10 @@ public class LoginController {
 
 
     public boolean Login(String username, String Password){
-
         User temp = user.getuserByName(username);
         String pass;
 
-        if(temp == null){
-            return false;
-        }
-
         pass = temp.getPassword();
-
 
         if(Password.equals(pass) ){
             Log.d("STATE","It works");

@@ -60,13 +60,22 @@ public class User {
 
     //traduce los permisos a bits dependiendo del binario, el parámetro indica si son permisos de cámara o archivo
     public boolean[] traductPermissions(boolean camera){
-        boolean[] perms=new boolean[8];
+        boolean[] perms=new boolean[4];
         int i=0;
         String binary="";
         if(camera)
             binary=Integer.toBinaryString(this.permissionCam);
         else
             binary=Integer.toBinaryString(this.permissionFile);
+        System.out.println(binary);
+        binary.trim();
+        if(binary.length()==3){
+            binary="0"+binary;
+        }else if(binary.length()==2){
+            binary="00"+binary;
+        }if(binary.length()==1){
+            binary="000"+binary;
+        }
         for(char a:binary.toCharArray()){
             if(a=='1') {
                 perms[i] = true;

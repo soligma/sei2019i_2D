@@ -65,8 +65,8 @@ public class UserRepository {
             Class.forName(SQLHelper.driver).newInstance();
             String[] datos = new String[]{"update "+SQLHelper.usr+".User set permissionsCam="+permCam+",permissionsFile="+permFile};
             succes = new AsyncCUD().execute(datos).get();
-            this.user.setPermissionCam(permCam);
-            this.user.setPermissionFile(permFile);
+            //this.user.setPermissionCam(permCam);
+            //this.user.setPermissionFile(permFile);
         }catch(Exception ex)
         {
             Log.d("failure in update", ex.getMessage());
