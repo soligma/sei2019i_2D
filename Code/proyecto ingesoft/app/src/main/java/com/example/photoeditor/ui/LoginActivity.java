@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
     public void buttonLogin(View view){
         String user_log = username.getText().toString();
         String pw_log = password.getText().toString();
@@ -33,27 +32,25 @@ public class LoginActivity extends AppCompatActivity {
         LoginController loginController = new LoginController();
 
 
-        if(user_log.length() == 0){
-            Toast.makeText(this, "Debe ingresar un nombre de usuario.", Toast.LENGTH_SHORT).show();
-        }
-        if(pw_log.length() == 0){
-            Toast.makeText(this, "Debe ingresar una contraseña.", Toast.LENGTH_SHORT).show();
-        }
-
-        if(loginController.Login(user_log, pw_log)){
-            if(true){ //si el usuario es un usuario general
-                Intent principal = new Intent(this,GalleryActivity.class);
-                startActivity(principal);
-            }else{ //si el usuario es un administrador
-                Intent admin = new Intent(this,PermissionActivity.class);
-                startActivity(admin);
-            }
+        if(user_log.length() == 0 || pw_log.length() == 0){
+            Toast.makeText(this, "El campo de usuario o contraseña esta vacio", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this, "El usuario no existe", Toast.LENGTH_SHORT).show();
+            if(loginController.Login(user_log, pw_log) != 0){
+                if(loginController.Login(user_log, pw_log) == 2){ //si el usuario es un usuario general
+                    Intent principal = new Intent(this,GalleryActivity.class);
+                    startActivity(principal);
+                }else if(loginController.Login(user_log, pw_log) == 1){ //si el usuario es un administrador
+                    Intent admin = new Intent(this,PermissionActivity.class);
+                    startActivity(admin);
+                }
+            }else{
+                Toast.makeText(this, "El usuario no existe", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     public void register(View view) {
         startActivity(new Intent(this, RegisterActivity.class));
+        overridePendingTransition(R.transition.fade_in,R.transition.fade_out);
     }
 }

@@ -9,7 +9,7 @@ public class LoginController {
     UserRepository user = new UserRepository();
 
 
-    public boolean Login(String username, String Password){
+    public int Login(String username, String Password){
         User temp = user.getuserByName(username);
         String pass;
 
@@ -17,10 +17,15 @@ public class LoginController {
 
         if(Password.equals(pass) ){
             Log.d("STATE","It works");
-            return true;
+            if(temp.isAdmin()){
+                return 1;
+            }
+            else {
+                return 2;
+            }
         }else{
             Log.d("STATE","It doesn't work");
-            return false;
+            return 0;
         }
     }
 }

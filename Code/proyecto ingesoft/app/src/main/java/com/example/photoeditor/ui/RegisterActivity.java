@@ -33,13 +33,13 @@ public class RegisterActivity extends AppCompatActivity {
         RegisterController registerController = new RegisterController();
 
         if(value2.length() == 0){
-            Toast.makeText(this, "Debe ingresar un nombre de usuario.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You must enter a username", Toast.LENGTH_SHORT).show();
         }else if(value4.length() == 0){
-            Toast.makeText(this, "Debe ingresar una contaseña.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You must enter a password", Toast.LENGTH_SHORT).show();
         }
 
         if(registerController.Register(value2, value4) && (value2.length() > 0 && value4.length()> 0)){
-            Toast.makeText(this, "Registro completo. Puede iniciar sesión", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Successful registration. You can login\n", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, LoginActivity.class));
         }
     }

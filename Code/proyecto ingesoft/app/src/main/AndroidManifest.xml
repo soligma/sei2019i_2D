@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.photoeditor">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -19,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"
+            />
         <activity android:name=".ui.PermissionActivity"></activity>
         <activity android:name=".ui.FilterActivity" />
         <activity android:name=".ui.GalleryActivity" />
