@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_login"
     tools:context=".ui.FilterActivity">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_bg"
+        android:onClick="Cancel"
+        android:text="@string/cancel"
+        android:textColor="@color/login_form_details_medium"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_bg"
+        android:onClick="Cancel"
+        android:text="@string/cancel"
+        android:textColor="@color/login_form_details_medium"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/savebutton"
@@ -14,9 +57,10 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:contentDescription="@string/app_name"
-        android:text="@string/buttonsave"
         android:background="@drawable/btn_bg"
+        android:contentDescription="@string/app_name"
+        android:onClick="buttonSaveChanges"
+        android:text="@string/buttonsave"
         android:textColor="@color/login_form_details_medium"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +68,7 @@
         app:srcCompat="@drawable/save" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/photo"
         android:layout_width="278dp"
         android:layout_height="286dp"
         android:layout_marginStart="8dp"
@@ -39,56 +83,10 @@
         app:layout_constraintTop_toBottomOf="@+id/savebutton"
         app:srcCompat="@drawable/gallery" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
-        <Button
-            android:id="@+id/filter1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/btn_bg"
-            android:onClick="buttonFilter1"
-            android:text="@string/filter"
-            android:textColor="@color/login_form_details_medium"
-            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/filter2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/btn_bg"
-            android:onClick="buttonFilter2"
-            android:text="@string/filter"
-            android:textColor="@color/login_form_details_medium"
-            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/filter3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/btn_bg"
-            android:onClick="buttonFilter3"
-            android:text="@string/filter"
-            android:textColor="@color/login_form_details_medium"
-            android:textSize="14sp" />
 
-    </LinearLayout>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_left"
@@ -104,40 +102,89 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="24dp" />
 
-    <LinearLayout
-        android:layout_width="46dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
+
+    <ImageButton
+        android:id="@+id/cropButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/bg_color"
+        android:contentDescription="@string/app_name"
+        android:onClick="cropButton"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.531">
+        app:srcCompat="@drawable/recortar" />
 
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/bg_color"
-            android:contentDescription="@string/app_name"
-            android:onClick="cropButton"
-            app:srcCompat="@drawable/recortar" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="55dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/crop"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/cropButton" />
 
-        <TextView
-            android:id="@+id/textView3"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="357dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/filter1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8sp"
-            android:layout_marginLeft="8sp"
-            android:text="@string/crop"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:onClick="buttonFilter1"
+            android:text="@string/filter1"
+            android:textColor="@color/login_form_details_medium"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/filter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:onClick="buttonFilter2"
+            android:text="@string/filter2"
+            android:textColor="@color/login_form_details_medium"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/filter3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:onClick="buttonFilter3"
+            android:text="@string/filter3"
+            android:textColor="@color/login_form_details_medium"
             android:textSize="14sp" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

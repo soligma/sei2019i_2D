@@ -22,9 +22,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"
-            />
         <activity android:name=".ui.PermissionActivity"></activity>
         <activity android:name=".ui.FilterActivity" />
         <activity android:name=".ui.GalleryActivity" />
@@ -36,6 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

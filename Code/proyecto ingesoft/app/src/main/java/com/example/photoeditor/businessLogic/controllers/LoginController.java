@@ -8,6 +8,9 @@ import com.example.photoeditor.dataAcces.repositories.UserRepository;
 public class LoginController {
     UserRepository user = new UserRepository();
 
+    public User getUser(){
+        return this.user.getUser();
+    }
 
     public int Login(String username, String Password){
         User temp = user.getuserByName(username);

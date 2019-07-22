@@ -103,5 +103,6 @@ public class PermissionActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Changes has been aplied", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this,LoginActivity.class));
+        finish();
     }
 }
