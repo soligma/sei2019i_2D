@@ -41,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         if(registerController.Register(value2, value4) && (value2.length() > 0 && value4.length()> 0)){
             Toast.makeText(this, "Successful registration. You can login\n", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, LoginActivity.class));
+            finish();
         }
     }
 
