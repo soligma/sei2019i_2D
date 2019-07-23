@@ -1,6 +1,7 @@
 package com.example.photoeditor.ui;
 
 import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -20,6 +21,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,8 +29,15 @@ import android.widget.Toast;
 
 import com.example.photoeditor.R;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import java.util.UUID;
 
 public class FilterActivity extends AppCompatActivity {
 	
@@ -36,6 +45,7 @@ public class FilterActivity extends AppCompatActivity {
 	final int GALLERY_CODE = 10;
 	final int PHOTO_CODE = 20;
 	final int CROP_CODE = 30;
+	final int CROP_PIC_REQUEST_CODE = 1;
 	ImageView iv;
 	Bitmap bitmap;
 	Uri uri;
@@ -98,9 +108,12 @@ public class FilterActivity extends AppCompatActivity {
 					iv.setImageBitmap(bitmap);
 					break;
 				
-				case CROP_CODE:
-					uri = data.getData();
-					iv.setImageURI(uri);
+				case CROP_PIC_REQUEST_CODE:
+					if (data != null) {
+						Bitmap bitmapx = (Bitmap) data.getExtras().get("data");
+						iv.setImageBitmap(bitmapx);
+					}
+
 					break;
 			}
 		}
@@ -191,31 +204,23 @@ public class FilterActivity extends AppCompatActivity {
 	public void buttonFilter4(View view) {
 		if (this.use) {
 			if (boolGallery[3]) {
-				filterBlue();
-			} else {
-				Toast.makeText(this, "blue is unavailabel for the gallery", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "blue is unavailable for the gallery", Toast.LENGTH_SHORT).show();
+			}} else {
+				if (boolCamera[3]) {
+					filterBlue();
+				} else {
+					Toast.makeText(this, "blue is unavailable for the camera", Toast.LENGTH_SHORT).show();
+				}
 			}
-		} else {
-			if (boolCamera[3]) {
-				filterBlue();
-			} else {
-				Toast.makeText(this, "blue is unavailable for the camera", Toast.LENGTH_SHORT).show();
-			}
-		}
+
 	}
 	
 	private void filterBlue() {
 		View content = findViewById(R.id.photo);
-		Paint paint = new Paint();
 		
 		int ini = Color.argb(125, 14  ,90, 232);
-		
-		int progressendcolor = Color.argb(76,14,30,39);
-		
-		LinearGradient linearGradient = new LinearGradient(0, 0, iv.getWidth(), iv.getHeight(), ini, progressendcolor, Shader.TileMode.CLAMP);
-		paint.setShader(linearGradient);
-		Canvas canvas = new Canvas(bitmap);
-		canvas.drawBitmap(bitmap, 0,0, paint);
+
+		iv.setColorFilter(ini);
 		bitmap = getScreenShot(content);
 	}
 	
@@ -227,11 +232,7 @@ public class FilterActivity extends AppCompatActivity {
 				Toast.makeText(this, "crop is unavailabel for the gallery", Toast.LENGTH_SHORT).show();
 			}
 		} else {
-			if (boolCamera[3]) {
-				cropImage();
-			} else {
 				Toast.makeText(this, "crop is unavailable for the camera", Toast.LENGTH_SHORT).show();
-			}
 		}
 	}
 	
@@ -247,13 +248,15 @@ public class FilterActivity extends AppCompatActivity {
 			cropIntent.putExtra("aspectY", 4);
 			cropIntent.putExtra("scaleUpIfNeeded", true);
 			cropIntent.putExtra("return-data", true);
-			startActivityForResult(cropIntent, CROP_CODE);
+			startActivityForResult(cropIntent, CROP_PIC_REQUEST_CODE);
 			
-		} catch (ActivityNotFoundException ex) {
-		
+		} catch (ActivityNotFoundException anfe) {
+			String errorMessage = "Whoops - your device doesn't support the crop action!";
+			Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+			toast.show();
 		}
 	}
-	
+
 	private void store(Bitmap bm, String fileName) {
 		String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Soligma";
 		File dir = new File(dirPath);
@@ -271,7 +274,7 @@ public class FilterActivity extends AppCompatActivity {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void buttonSaveChanges(View view) {
 		View content = findViewById(R.id.photo);
 		Bitmap bitmap = getScreenShot(content);

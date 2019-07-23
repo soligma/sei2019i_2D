@@ -30,25 +30,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_weight="1"
-        android:background="@drawable/btn_bg"
-        android:onClick="Cancel"
-        android:text="@string/cancel"
-        android:textColor="@color/login_form_details_medium"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.932"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/savebutton"
@@ -181,6 +162,17 @@
             android:background="@drawable/btn_bg"
             android:onClick="buttonFilter3"
             android:text="@string/filter3"
+            android:textColor="@color/login_form_details_medium"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/filter4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:onClick="buttonFilter4"
+            android:text="@string/filter4"
             android:textColor="@color/login_form_details_medium"
             android:textSize="14sp" />
     </LinearLayout>
